@@ -1,17 +1,8 @@
-// Testing ES6 transpilation to ES5
-let test = 'Hello';
-// debugger;
-console.log(test);
+const textArea = document.querySelector("#textArea");
+console.log(textArea);
 
-class StartPCAcademy {
-  constructor() {
-    console.log('StartPCAcademy class created');
-  }
+// textArea.addEventListener('onchange', handleOnChange);
 
-  start() {
-    console.log('PC Academy started!');
-  }
-}
-
-const startPCAcademy = new StartPCAcademy();
-startPCAcademy.start();
+// const handleOnChange = (e) => {
+//   console.log(e);
+// };

@@ -1,0 +1,7 @@
+#textArea {
+  resize: none;
+}
+
+.textAreaResizeVertical {
+  resize: vertical;
+}
