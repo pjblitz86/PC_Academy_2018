@@ -1,0 +1,37 @@
+{
+  "name": "pc_academy_2018",
+  "version": "1.0.0",
+  "description": "Present Connection Academy 2018 tasks",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel src -d lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pjblitz86/PC_Academy_2018.git"
+  },
+  "keywords": [
+    "pc",
+    "present",
+    "connection",
+    "academy",
+    "javascript",
+    "typescript",
+    "node",
+    "js",
+    "react"
+  ],
+  "author": "Paulius Juknis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pjblitz86/PC_Academy_2018/issues"
+  },
+  "homepage": "https://github.com/pjblitz86/PC_Academy_2018#readme",
+  "devDependencies": {
+    "@babel/preset-env": "^7.1.5",
+    "babel-cli": "^6.26.0",
+    "install": "^0.12.2",
+    "npm": "^6.4.1"
+  }
+}
