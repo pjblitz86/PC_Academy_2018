@@ -1,29 +1,52 @@
+// selectors
 const textArea = document.querySelector('#textArea');
-console.log(textArea);
-let rowAttributeValue = textArea.getAttribute('rows');
-let colsAttributeValue = textArea.getAttribute('cols');
-let currentTextValue;
-let currentTextLength;
+let rowCount = textArea.getAttribute('rows');
+let colsCount = textArea.getAttribute('cols');
+// let minRows = 1;
+let maxRows = 4;
+let inputValue;
+let inputLength;
 
-console.log(`row count: ${rowAttributeValue}`);
-console.log(`row width: ${colsAttributeValue} chars`);
-
-textArea.addEventListener('input', handleTextChange);
-
-function handleTextChange(e) {
-  currentTextValue = e.target.value;
-  currentTextLength = currentTextValue.length;
-  console.log(currentTextValue);
-  console.log(currentTextLength);
-  if (currentTextLength <= colsAttributeValue) {
-    handleRowDecrease();
+// event listeners
+textArea.addEventListener('input', onInput);
+  
+function onInput(e) {
+  textArea.classList.remove('no-resize');
+  textArea.classList.add('allow-resize');
+  inputValue = e.target.value;
+  inputLength = inputValue.length;
+  console.log('text value:', inputValue);
+  console.log('text length:', inputLength);
+  textArea.style.overflow = 'hidden';
+  // logic
+  // if (inputLength <= colsCount) {
+  //   handleRowDecreaseToMin();
+  // }
+  if (inputLength > colsCount || e.which === 13 || e.keyCode === 13) {
+    handleRowIncreaseToMax();
   }
-  if (currentTextLength > colsAttributeValue) {
-    rowAttributeValue += 1;
-    currentTextLength = '0';
+  if (rowCount > maxRows) {
+    handleScrollBar();
   }
+  textArea.classList.remove('allow-resize');
+  textArea.classList.add('no-resize');
 }
-function handleRowDecrease() {
 
-  rowAttributeValue = textArea.setAttribute('rows', 1);
+// helper functions
+// function handleRowDecreaseToMin() {
+//   rowCount = minRows;
+//   rowCount = textArea.setAttribute('rows', 1);
+// }
+
+function handleRowIncreaseToMax() {
+  rowCount = maxRows;
+  textArea.setAttribute('rows', rowCount);
+  console.log('row count', rowCount);
+  console.log('text value:', inputValue);
+  console.log('text length:', inputLength);
+}
+
+function handleScrollBar() {
+
+  textArea.style.overflow = 'auto';
 }
