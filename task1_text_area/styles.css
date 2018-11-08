@@ -4,10 +4,18 @@
   border: 2px solid black;
 }
 
+.remove-scrollbar {
+  overflow: hidden;
+}
+
 .no-resize {
   resize: none;
 }
 
 .allow-resize {
   resize: vertical;
+}
+
+.add-scrollbar {
+  overflow-y: scroll;
 }
