@@ -1,6 +1,6 @@
-// problems
-// scrollbar appearing lowers cols size
-// flickering cuz of arrays - use scroll example
+// PROBLEMS
+// scrollbar appearing lowers cols size and text from current row overflows to next line
+// cannot put vars inside class cuz of eslint
 
 const textArea = document.querySelector('#textArea');
 let rows = parseInt(textArea.getAttribute('rows'));
@@ -22,16 +22,15 @@ class TextArea {
     inputValue = e.target.value;
     inputArr = inputValue.split('\n');
     rows = inputArr.length;
-    // neveikia for
     for (let i = 0; i < inputArr.length; i++) {
       rows += parseInt(inputArr[i].length / cols);
+      console.log(rows);
     }
     if (rows > maxRows) {
       rows = maxRows;
       textArea.classList.add('add-scrollbar');
     } else if (rows < minRows) {
       rows = minRows;
-      // textArea.setAttribute('rows', rows);
     } else {
       textArea.setAttribute('rows', rows);
       textArea.classList.remove('add-scrollbar');
@@ -42,4 +41,4 @@ class TextArea {
 }
 
 const tA = new TextArea();
-textArea.addEventListener('keyup', tA.resize);
+textArea.addEventListener('input', tA.resize);
