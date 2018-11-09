@@ -19,3 +19,8 @@
 .add-scrollbar {
   overflow-y: scroll;
 }
+
+input {
+  display: inline-block;
+  width: 50px;;
+}

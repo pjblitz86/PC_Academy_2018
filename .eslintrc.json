@@ -1,7 +1,18 @@
 {
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "script",
+    "ecmaFeatures": {
+      "arrowFunctions": true,
+      "binaryLiterals": true,
+      "blockBindings": true,
+      "classes": true
+    }
+  },
   "env": {
     "browser": true,
-    "es6": true
+    "es6": true,
+    "node": true
   },
   "extends": [
     "eslint:recommended"
@@ -9,6 +20,7 @@
   "rules": {
     "no-debugger": "off",
     "no-console": "off",
+    "no-var": "error",
     "semi": "warn",
     "quotes": [
       2,
