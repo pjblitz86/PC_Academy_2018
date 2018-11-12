@@ -23,17 +23,19 @@ class TextArea {
     rows = inputArr.length;
     for (let i = 0; i < inputArr.length; i++) {
       rows += parseInt(inputArr[i].length / cols);
-      console.log(rows);
+    }
+    console.log(inputValue);
+    if (rows < minRows || inputValue === '') {
+      rows = minRows;
     }
     if (rows > maxRows) {
       rows = maxRows;
       textArea.classList.add('add-scrollbar');
-    } else if (rows < minRows) {
-      rows = minRows;
     } else {
       textArea.setAttribute('rows', rows);
       textArea.classList.remove('add-scrollbar');
     }
+
     textArea.classList.remove('allow-resize');
     textArea.classList.add('no-resize');
   }
