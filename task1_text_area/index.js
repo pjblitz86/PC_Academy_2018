@@ -1,6 +1,7 @@
 // PROBLEMS
 // scrollbar appearing lowers cols size and text from current row overflows to next line
-// cannot put vars inside class cuz of eslint
+// when reaching col length, cursor doesnt jump to next line - browser specific?
+// cannot put let/const inside class cuz of eslint
 
 const textArea = document.querySelector('#textArea');
 let rows = parseInt(textArea.getAttribute('rows'));
@@ -11,11 +12,9 @@ let inputValue;
 let inputArr;
 
 class TextArea {
-
   constructor() {
 
   }
-
   resize(e) {
     textArea.classList.remove('no-resize');
     textArea.classList.add('allow-resize');
