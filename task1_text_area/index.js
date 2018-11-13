@@ -16,6 +16,7 @@ class TextArea {
 
   }
   resize(e) {
+
     textArea.classList.remove('no-resize');
     textArea.classList.add('allow-resize');
     inputValue = e.target.value;
@@ -24,7 +25,6 @@ class TextArea {
     for (let i = 0; i < inputArr.length; i++) {
       rows += parseInt(inputArr[i].length / cols);
     }
-    console.log(inputValue);
     if (rows < minRows || inputValue === '') {
       rows = minRows;
     }
