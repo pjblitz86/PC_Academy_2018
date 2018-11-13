@@ -17,7 +17,7 @@ module.exports = {
     extensions: ['.tsx', '.ts', '.js']
   },
   output: {
-    filename: './task2_loan_calc/dist/transpiled.js',
-    path: path.resolve(__dirname, 'dist')
+    filename: './transpiled.js',
+    path: path.resolve(__dirname, './task2_loan_calc/dist')
   }
 };
