@@ -4,9 +4,9 @@ import ICredit from './ICredit';
 class MortgageCredit extends AbstractCredit implements ICredit {
 
 
-  calculateLoanPerMonth(): number {
+  calculateLoanPerMonth(): string {
     console.log('implementation');
-    return 1;
+    return "3";
   }
 }
 

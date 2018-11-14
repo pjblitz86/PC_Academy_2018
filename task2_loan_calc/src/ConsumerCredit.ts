@@ -7,9 +7,21 @@ class ConsumerCredit extends AbstractCredit implements ICredit {
     super(loanAmount, loanPeriod, interestRate);
   }
 
-  calculateLoanPerMonth(): number {
-    console.log('implementation');
-    return 1;
+  calculateLoanPerMonth(): string {
+    switch (this.interestRate) {
+      case "Automobile:9%":
+        this.interestRate = (9 / 12).toString();
+        break;
+      case "Computer:6%":
+        this.interestRate = (6 / 12).toString();
+        break;
+      default:
+        this.interestRate = (3 / 12).toString();
+        break;
+    }
+
+
+    return "1";
   }
 }
 

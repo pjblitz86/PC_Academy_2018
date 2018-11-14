@@ -9,56 +9,58 @@
     crossorigin="anonymous">
   <title>Fast Credit</title>
 </head>
-<nav class="navbar navbar-expand-sm navbar-dark bg-primary mb-3 py-0">
-  <div class="container">
-    <a href="#" class="navbar-brand">
-      Fast Credit
-    </a>
-    <div>
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a href="./consumer-credit.html" class="nav-link">
-            Consumer Credit
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="./mortgage-credit.html" class="nav-link">
-            Mortgage Credit
-          </a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-<form class="needs-validation" novalidate>
-  <div class="container">
-    <div class="form-group col-3">
-      <label for="inputAmountFC"><strong>Loan Amount, EUR</strong></label>
-      <input type="number" min="1000" max="5000" class="form-control" id="inputAmountFC" placeholder="max 5000 eur"
-        required>
-      <div class="invalid-feedback">Please enter valid loan amount</div>
-    </div>
-    <div class="form-group col-3">
-      <label for="inputPeriodFC"><strong>Period, in months</strong></label>
-      <input type="number" min="1" max="60" class="form-control" id="inputPeriodFC" placeholder="max 2 years/24 months"
-        required>
-      <div class="invalid-feedback">Please enter valid period in months</div>
-    </div>
-    <div class="form-group col-3">
-      <label for="inputPercFC"><strong>Interest Rate</strong></label>
-      <input type="text" class="form-control" id="inputPercFC" value="20%" disabled>
-    </div>
-    <div class="col-3">
-      <button type="submit" id="FCbutton" class="btn btn-primary">Calculate</button>
-    </div>
-    <div class="form-group col-3 pt-4">
-      <label for="loanPaymentFC"><strong>Loan payment, EUR/month</strong></label>
-      <input type="number" class="form-control" id="loanPaymentFC" disabled>
-    </div>
-  </div>
-</form>
 
 <body>
+  <nav class="navbar navbar-expand-sm navbar-dark bg-primary mb-3 py-0">
+    <div class="container">
+      <a href="#" class="navbar-brand">
+        Fast Credit
+      </a>
+      <div>
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a href="./consumer-credit.html" class="nav-link">
+              Consumer Credit
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="./mortgage-credit.html" class="nav-link">
+              Mortgage Credit
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <form id="formFC" class="needs-validation" novalidate>
+    <div class="container">
+      <div class="form-group col-3">
+        <label for="inputAmountFC"><strong>Loan Amount, EUR</strong></label>
+        <input type="number" min="1000" max="5000" class="form-control" id="inputAmountFC" placeholder="max 5000 eur"
+          required>
+        <div class="invalid-feedback">Please enter valid loan amount</div>
+      </div>
+      <div class="form-group col-3">
+        <label for="inputPeriodFC"><strong>Period, in months</strong></label>
+        <input type="number" min="1" max="60" class="form-control" id="inputPeriodFC" placeholder="max 2 years/24 months"
+          required>
+        <div class="invalid-feedback">Please enter valid period in months</div>
+      </div>
+      <div class="form-group col-3">
+        <label for="inputPercFC"><strong>Interest Rate</strong></label>
+        <input type="text" class="form-control" id="inputPercFC" value="20%" disabled>
+      </div>
+      <div class="col-3">
+        <button type="submit" id="FCbutton" class="btn btn-primary">Calculate</button>
+      </div>
+      <div class="form-group col-3 pt-4">
+        <label for="loanPaymentFC"><strong>Loan payment, EUR/month</strong></label>
+        <input type="number" class="form-control" id="loanPaymentFC" disabled>
+      </div>
+    </div>
+  </form>
+
+
 
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

@@ -9,61 +9,61 @@
     crossorigin="anonymous">
   <title>Consumer Credit</title>
 </head>
-<nav class="navbar navbar-expand-sm navbar-dark bg-danger mb-3 py-0">
-  <div class="container">
-    <a href="#" class="navbar-brand">
-      Consumer Credit
-    </a>
-    <div>
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a href="./fast-credit.html" class="nav-link">
-            Fast Credit
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="./mortgage-credit.html" class="nav-link">
-            Mortgage Credit
-          </a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-<form id="formCC" class="needs-validation" novalidate>
-  <div class="container">
-    <div class="form-group col-3">
-      <label for="inputAmountCC"><strong>Loan Amount, EUR</strong></label>
-      <input type="number" min="1000" max="10000" class="form-control" id="inputAmountCC" placeholder="max 10000 eur"
-        required>
-      <div class="invalid-feedback">Please enter valid loan amount</div>
-    </div>
-    <div class="form-group col-3">
-      <label for="inputPeriodCC"><strong>Period, in months</strong></label>
-      <input type="number" min="1" max="60" class="form-control" id="inputPeriodCC" placeholder="max 5 years/60 months"
-        required>
-      <div class="invalid-feedback">Please enter valid period in months</div>
-    </div>
-    <div class="form-group col-3">
-      <label for="selectItemCC"><strong>Interest rate from item</strong></label>
-      <select class="form-control" id="selectItemCC">
-        <option>Automobile - 10%</option>
-        <option>Computer - 7 %</option>
-        <option>Other - 5%</option>
-      </select>
-    </div>
-    <div class="col-3">
-      <button type="submit" id="CCbutton" class="btn btn-danger">Calculate</button>
-    </div>
-    <div class="form-group col-3 pt-4">
-      <label for="loanPaymentCC"><strong>Loan payment, EUR/month</strong></label>
-      <input type="number" class="form-control" id="loanPaymentCC" disabled>
-    </div>
-  </div>
-</form>
 
 <body>
 
+  <nav class="navbar navbar-expand-sm navbar-dark bg-danger mb-3 py-0">
+    <div class="container">
+      <a href="#" class="navbar-brand">
+        Consumer Credit
+      </a>
+      <div>
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a href="./fast-credit.html" class="nav-link">
+              Fast Credit
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="./mortgage-credit.html" class="nav-link">
+              Mortgage Credit
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <form id="formCC" class="needs-validation" novalidate>
+    <div class="container">
+      <div class="form-group col-3">
+        <label for="inputAmountCC"><strong>Loan Amount, EUR</strong></label>
+        <input type="number" min="1000" max="10000" class="form-control" id="inputAmountCC" placeholder="max 10000 eur"
+          required>
+        <div class="invalid-feedback">Please enter valid loan amount</div>
+      </div>
+      <div class="form-group col-3">
+        <label for="inputPeriodCC"><strong>Period, in months</strong></label>
+        <input type="number" min="1" max="60" class="form-control" id="inputPeriodCC" placeholder="max 5 years/60 months"
+          required>
+        <div class="invalid-feedback">Please enter valid period in months</div>
+      </div>
+      <div class="form-group col-3">
+        <label for="selectItemCC"><strong>Interest rate from item</strong></label>
+        <select class="form-control" id="selectItemCC">
+          <option>Automobile:9%</option>
+          <option>Computer:6%</option>
+          <option>Other:3%</option>
+        </select>
+      </div>
+      <div class="col-3">
+        <button type="submit" id="CCbutton" class="btn btn-danger">Calculate</button>
+      </div>
+      <div class="form-group col-3 pt-4">
+        <label for="loanPaymentCC"><strong>Loan payment, EUR/month</strong></label>
+        <input type="text" class="form-control" id="loanPaymentCC" disabled>
+      </div>
+    </div>
+  </form>
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>

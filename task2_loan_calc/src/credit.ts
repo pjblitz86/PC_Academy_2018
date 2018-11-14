@@ -1,9 +1,11 @@
 import ConsumerCredit from "./ConsumerCredit";
+import FastCredit from "./FastCredit";
+import MortgageCredit from "./MortgageCredit";
 
 // form selectors
 let consumerCreditForm = document.querySelector('#formCC');
-let fastCreditButton = document.querySelector('#FCbutton');
-let mortgageCreditButton = document.querySelector('#MCbutton');
+let fastCreditForm = document.querySelector('#formFC');
+let mortgageCreditForm = document.querySelector('#formMC');
 
 // forms validation
 window.addEventListener('load', () => {
@@ -19,15 +21,48 @@ window.addEventListener('load', () => {
   });
 }, false);
 
-// form submit event listeners
-consumerCreditForm.addEventListener('submit', (e) => {
-  let loanAmount = (<HTMLInputElement>document.querySelector('#inputAmountCC')).value;
-  let loanPeriod = (<HTMLInputElement>document.querySelector('#inputPeriodCC')).value;
-  let interestRate = (<HTMLInputElement>document.querySelector('#selectItemCC')).value;
+// Consumer Credit
+if (consumerCreditForm) {
+  consumerCreditForm.addEventListener('submit', (e) => {
+    const loanAmount = (<HTMLInputElement>document.querySelector('#inputAmountCC')).value;
+    const loanPeriod = (<HTMLInputElement>document.querySelector('#inputPeriodCC')).value;
+    const interestRate = (<HTMLInputElement>document.querySelector('#selectItemCC')).value;
+    let payPerMonth = (<HTMLInputElement>document.querySelector('#loanPaymentCC'));
 
-  let consumerCredit = new ConsumerCredit(loanAmount, loanPeriod, interestRate);
+    const consumerCredit = new ConsumerCredit(loanAmount, loanPeriod, interestRate);
+    payPerMonth.value = consumerCredit.calculateLoanPerMonth();
+    console.log(e);
+    e.preventDefault();
+  });
+}
 
-  console.log(e);
-  e.preventDefault();
-});
+// Fast Credit
+if (fastCreditForm) {
+  fastCreditForm.addEventListener('submit', (e) => {
+    const loanAmount = (<HTMLInputElement>document.querySelector('#inputAmountFC')).value;
+    const loanPeriod = (<HTMLInputElement>document.querySelector('#inputPeriodFC')).value;
+    const interestRate = (<HTMLInputElement>document.querySelector('#inputPercFC')).value;
+    let payPerMonth = (<HTMLInputElement>document.querySelector('#loanPaymentFC'));
+
+    const fastCredit = new FastCredit(loanAmount, loanPeriod, interestRate);
+    payPerMonth.value = fastCredit.calculateLoanPerMonth();
+    console.log(e);
+    e.preventDefault();
+  });
+}
+
+// Mortgage Credit
+if (mortgageCreditForm) {
+  mortgageCreditForm.addEventListener('submit', (e) => {
+    const loanAmount = (<HTMLInputElement>document.querySelector('#inputAmountMC')).value;
+    const loanPeriod = (<HTMLInputElement>document.querySelector('#inputPeriodMC')).value;
+    const interestRate = (<HTMLInputElement>document.querySelector('#inputPercMC')).value;
+    let payPerMonth = (<HTMLInputElement>document.querySelector('#loanPaymentMC'));
+
+    const mortgageCredit = new MortgageCredit(loanAmount, loanPeriod, interestRate);
+    payPerMonth.value = mortgageCredit.calculateLoanPerMonth();
+    console.log(e);
+    e.preventDefault();
+  });
+}
 

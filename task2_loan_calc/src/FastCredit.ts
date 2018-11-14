@@ -7,9 +7,9 @@ class FastCredit extends AbstractCredit implements ICredit {
 
   }
 
-  calculateLoanPerMonth(): number {
-    console.log('implementation');
-    return 1;
+  calculateLoanPerMonth(): string {
+
+    return "2";
   }
 }
 
