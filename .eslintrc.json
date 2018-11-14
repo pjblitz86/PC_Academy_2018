@@ -20,10 +20,6 @@
   "rules": {
     "no-debugger": "off",
     "no-console": "off",
-    "semi": "warn",
-    "quotes": [
-      2,
-      "single"
-    ]
+    "semi": "warn"
   }
 }

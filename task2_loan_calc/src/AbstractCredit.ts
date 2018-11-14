@@ -1,7 +1,13 @@
 abstract class AbstractCredit {
-  loanAmount: number;
-  loanPeriod: number;
-  interestRate: number;
+  loanAmount: string;
+  loanPeriod: string
+  interestRate: string;
+
+  constructor(loanAmount: string, loanPeriod: string, interestRate: string) {
+    this.loanAmount = loanAmount;
+    this.loanPeriod = loanPeriod;
+    this.interestRate = interestRate;
+  }
 }
 
 export default AbstractCredit;
