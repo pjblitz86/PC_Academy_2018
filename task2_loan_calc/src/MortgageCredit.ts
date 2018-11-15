@@ -32,6 +32,7 @@ class MortgageCredit extends AbstractCredit implements ICredit {
 
   calculateLoanPerMonth(): number {
     Number(this.interestRate = 2 / 12 / 100);
+    this.loanPeriod *= 12;
     return (this.loanAmount * (this.interestRate * Math.pow((1 + this.interestRate), this.loanPeriod) / (Math.pow((1 + this.interestRate), this.loanPeriod) - 1)));
   }
 }
