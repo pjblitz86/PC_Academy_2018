@@ -6,6 +6,7 @@ import MortgageCredit from "./MortgageCredit";
 let consumerCreditForm = document.querySelector('#formCC');
 let fastCreditForm = document.querySelector('#formFC');
 let mortgageCreditForm = document.querySelector('#formMC');
+let form = document.querySelector('form');
 
 // forms validation
 window.addEventListener('load', () => {
