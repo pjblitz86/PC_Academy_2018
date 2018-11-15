@@ -31,7 +31,6 @@ if (consumerCreditForm) {
 
     const consumerCredit = new ConsumerCredit(loanAmount, loanPeriod, interestRate);
     payPerMonth.value = consumerCredit.calculateLoanPerMonth().toFixed(2).toString();
-    console.log(e);
     e.preventDefault();
   });
 }
@@ -46,7 +45,6 @@ if (fastCreditForm) {
 
     const fastCredit = new FastCredit(loanAmount, loanPeriod, interestRate);
     payPerMonth.value = fastCredit.calculateLoanPerMonth().toFixed(2).toString();
-    console.log(e);
     e.preventDefault();
   });
 }
@@ -54,14 +52,16 @@ if (fastCreditForm) {
 // Mortgage Credit
 if (mortgageCreditForm) {
   mortgageCreditForm.addEventListener('submit', (e) => {
-    const loanAmount = parseInt((<HTMLInputElement>document.querySelector('#inputAmountMC')).value);
+    let loanAmount = (<HTMLInputElement>document.querySelector('#inputAmountMC'));
     const loanPeriod = parseInt((<HTMLInputElement>document.querySelector('#inputPeriodMC')).value);
     const interestRate = (<HTMLInputElement>document.querySelector('#inputPercMC')).value;
+    const salaryPerMonth = parseInt((<HTMLInputElement>document.querySelector('#inputSalaryMC')).value);
+    const kidsNumber = parseInt((<HTMLInputElement>document.querySelector('#inputKidsMC')).value);
     let payPerMonth = (<HTMLInputElement>document.querySelector('#loanPaymentMC'));
 
-    const mortgageCredit = new MortgageCredit(loanAmount, loanPeriod, interestRate);
-    payPerMonth.value = mortgageCredit.calculateLoanPerMonth().toString();
-    console.log(e);
+    const mortgageCredit = new MortgageCredit(0, loanPeriod, interestRate, salaryPerMonth, kidsNumber);
+    loanAmount.value = mortgageCredit.calculateMaxLoanAmount().toFixed(2).toString();
+    payPerMonth.value = mortgageCredit.calculateLoanPerMonth().toFixed(2).toString();
     e.preventDefault();
   });
 }

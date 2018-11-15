@@ -35,25 +35,20 @@
   <form id="formMC" class="needs-validation" novalidate>
     <div class="container">
       <div class="form-group col-3">
-        <label for="inputAmountMC"><strong>Loan Amount, EUR</strong></label>
-        <input type="number" min="10000" class="form-control" id="inputAmountMC" placeholder="min 10000 eur" required>
-        <div class="invalid-feedback">Please enter valid loan amount</div>
-      </div>
-      <div class="form-group col-3">
         <label for="inputPeriodMC"><strong>Period, in years</strong></label>
-        <input type="number" min="5" max="30" class="form-control" id="inputPeriodMC" placeholder="max 30 years"
+        <input type="number" min="10" max="30" class="form-control" id="inputPeriodMC" placeholder="max 30 years"
           required>
         <div class="invalid-feedback">Please enter valid period in years</div>
       </div>
       <div class="form-group col-3">
         <label for="inputSalaryMC"><strong>Salary, EUR/month</strong></label>
-        <input type="number" class="form-control" id="inputSalaryMC" placeholder="enter salary" required>
+        <input type="number" min="0" class="form-control" id="inputSalaryMC" placeholder="enter salary" required>
         <div class="invalid-feedback">Please enter a valid salary, eur per month</div>
       </div>
       <div class="form-group col-3">
         <label for="inputKidsMC"><strong>Number of kids in the family</strong></label>
         <input type="number" min="0" class="form-control" id="inputKidsMC" placeholder="kids" required>
-        <div class="invalid-feedback">Please enter a valid kids number in the family</div>
+        <div class="invalid-feedback">Please enter a valid number of kids in the family</div>
       </div>
       <div class="form-group col-3">
         <label for="inputPercFC"><strong>Interest Rate</strong></label>
@@ -63,6 +58,10 @@
         <button type="submit" id="MCbutton" class="btn btn-dark">Calculate</button>
       </div>
       <div class="form-group col-3 pt-4">
+        <label for="inputAmountMC"><strong>Max Loan Amount, EUR</strong></label>
+        <input type="number" class="form-control" id="inputAmountMC" disabled>
+      </div>
+      <div class="form-group col-3 pt-2">
         <label for="loanPaymentMC"><strong>Loan payment, EUR/month</strong></label>
         <input type="number" class="form-control" id="loanPaymentMC" disabled>
       </div>
