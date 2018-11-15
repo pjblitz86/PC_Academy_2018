@@ -30,7 +30,7 @@ if (consumerCreditForm) {
     let payPerMonth = (<HTMLInputElement>document.querySelector('#loanPaymentCC'));
 
     const consumerCredit = new ConsumerCredit(loanAmount, loanPeriod, interestRate);
-    payPerMonth.value = `${consumerCredit.calculateLoanPerMonth().toFixed(2)} EUR`;
+    payPerMonth.value = consumerCredit.calculateLoanPerMonth().toFixed(2).toString();
     console.log(e);
     e.preventDefault();
   });
@@ -45,7 +45,7 @@ if (fastCreditForm) {
     let payPerMonth = (<HTMLInputElement>document.querySelector('#loanPaymentFC'));
 
     const fastCredit = new FastCredit(loanAmount, loanPeriod, interestRate);
-    payPerMonth.value = fastCredit.calculateLoanPerMonth().toString();
+    payPerMonth.value = fastCredit.calculateLoanPerMonth().toFixed(2).toString();
     console.log(e);
     e.preventDefault();
   });
