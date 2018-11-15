@@ -1,5 +1,5 @@
 interface ICredit {
-  calculateLoanPerMonth(): string;
+  calculateLoanPerMonth(): number;
 }
 
 export default ICredit;

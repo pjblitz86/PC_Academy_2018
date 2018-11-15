@@ -2,14 +2,14 @@ import AbstractCredit from './AbstractCredit';
 import ICredit from './ICredit';
 
 class FastCredit extends AbstractCredit implements ICredit {
-  constructor(loanAmount: string, loanPeriod: string, interestRate: string) {
+  constructor(loanAmount: number, loanPeriod: number, interestRate: string) {
     super(loanAmount, loanPeriod, interestRate);
 
   }
 
-  calculateLoanPerMonth(): string {
+  calculateLoanPerMonth(): number {
 
-    return "2";
+    return 3;
   }
 }
 
