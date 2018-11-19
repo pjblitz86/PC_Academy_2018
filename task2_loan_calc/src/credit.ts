@@ -25,8 +25,8 @@ window.addEventListener('load', () => {
 // Consumer Credit
 if (consumerCreditForm) {
   consumerCreditForm.addEventListener('submit', (e) => {
-    const loanAmount = parseInt((<HTMLInputElement>document.querySelector('#inputAmountCC')).value);
-    const loanPeriod = parseInt((<HTMLInputElement>document.querySelector('#inputPeriodCC')).value);
+    const loanAmount: number = parseInt((<HTMLInputElement>document.querySelector('#inputAmountCC')).value);
+    const loanPeriod: number = parseInt((<HTMLInputElement>document.querySelector('#inputPeriodCC')).value);
     const interestRate = (<HTMLInputElement>document.querySelector('#selectItemCC')).value;
     let payPerMonth = (<HTMLInputElement>document.querySelector('#loanPaymentCC'));
 
@@ -39,8 +39,8 @@ if (consumerCreditForm) {
 // Fast Credit
 if (fastCreditForm) {
   fastCreditForm.addEventListener('submit', (e) => {
-    const loanAmount = parseInt((<HTMLInputElement>document.querySelector('#inputAmountFC')).value);
-    const loanPeriod = parseInt((<HTMLInputElement>document.querySelector('#inputPeriodFC')).value);
+    const loanAmount: number = parseInt((<HTMLInputElement>document.querySelector('#inputAmountFC')).value);
+    const loanPeriod: number = parseInt((<HTMLInputElement>document.querySelector('#inputPeriodFC')).value);
     const interestRate = (<HTMLInputElement>document.querySelector('#inputPercFC')).value;
     let payPerMonth = (<HTMLInputElement>document.querySelector('#loanPaymentFC'));
 
@@ -54,9 +54,9 @@ if (fastCreditForm) {
 if (mortgageCreditForm) {
   mortgageCreditForm.addEventListener('submit', (e) => {
     let loanAmount = (<HTMLInputElement>document.querySelector('#inputAmountMC'));
-    const loanPeriod = parseInt((<HTMLInputElement>document.querySelector('#inputPeriodMC')).value);
+    const loanPeriod: number = parseInt((<HTMLInputElement>document.querySelector('#inputPeriodMC')).value);
     const interestRate = (<HTMLInputElement>document.querySelector('#inputPercMC')).value;
-    const salaryPerMonth = parseInt((<HTMLInputElement>document.querySelector('#inputSalaryMC')).value);
+    const salaryPerMonth: number = parseInt((<HTMLInputElement>document.querySelector('#inputSalaryMC')).value);
     const kidsNumber = parseInt((<HTMLInputElement>document.querySelector('#inputKidsMC')).value);
     let payPerMonth = (<HTMLInputElement>document.querySelector('#loanPaymentMC'));
 

@@ -11,7 +11,6 @@ class ConsumerCredit extends AbstractCredit implements ICredit {
     switch (this.interestRate) {
       case "Automobile:9%":
         Number(this.interestRate = 9 / 12 / 100);
-
         break;
       case "Computer:6%":
         Number(this.interestRate = 6 / 12 / 100);
