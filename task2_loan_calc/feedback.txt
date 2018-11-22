@@ -1,0 +1,24 @@
+Funkcionalumas:
+* Jei consumer credit puslapy paspaudžiu “Calculate” rezultate atsiranda NaN
+* Mortage credit neduoda įvesti norimos skolintis sumos
+
+Kodas:
+* credit.ts faile surašyti komentarai, kiekvieną pakomentuotą kodo bloką galėtum iškelti į funkciją ir komentatų neliktų
+* Const reikėtų naudoti kada tik galima. Const neleidžia perrašyt kintamojo, bet leidžia keisti jo turinį.
+Tarkim deklaruojame tokį kintamąjį:
+    const textBox = document.getElementById('textarea')
+    Kadangi getElementById grąžina objektą, galime naudoti const ir galime keisti to objekto parametrus.
+Pvz: textbox.style = {} galime padaryti
+bet textbox = {} jau mes errorą.
+* form kintamasis faile credit.ts niekur nenaudojamas
+* select’inant elementą pagal id labiau tinka getElementById
+* nurodai tipą any, nebūtų jokio skirtumo jei jo nenurodytum, nes by default parametrai/kintamieji būtų any
+* vietoj Array.prototype.filter.call galima tiesiog nodeList (kuris gaunamas iš “getElementsByClassName”) pasiversti į array. Array.from()
+tada ant array galėsi kviesti “filter” tiesiogiai
+* beje, kam naudojamas filter? čia labiau tiktų tiesiog forEach
+* form.checkValidity() === false kam lyginti su false, jei if’as tiesiogiai priima bool?
+* Abstrakčios klasės pavadinimas neturėtų turėti žodžio abstract, juk ir taip yra naudojamas abstract raktažodis
+* galima exportuoti klases ir kitus elementus tiesiogiai. Galima rašyti taip: export default abstract class AbstractCredit
+* switch mechanizme galima būtų naudoti enum reikšmes vietoj plain string’ų
+* naudojami “Magic numbers”: Number(this.interestRate = 9 / 12 / 100);
+* kam importuojamas jquery, jei jis niekur nenaudojamas?

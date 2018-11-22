@@ -2,8 +2,8 @@ const ram = require('./ram');
 const cpu = require('./cpu');
 
 function cpuAndRamUsed() {
-  ram();
   cpu();
+  ram();
 }
 
 setInterval(cpuAndRamUsed, 500);
