@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "babel task1_text_area -d build"
+    "build": "babel task1_text_area -d build",
+    "start": "node task3_node_cpu_ram/monitor.js"
   },
   "repository": {
     "type": "git",
