@@ -1,7 +1,7 @@
 const Validator = require('validator');
 const isEmpty = require('./is-empty');
 
-const validateProfileInput = (data) => {
+module.exports = function validateProfileInput(data) {
   let errors = {};
 
   data.handle = !isEmpty(data.handle) ? data.handle : '';
@@ -67,5 +67,3 @@ const validateProfileInput = (data) => {
     isValid: isEmpty(errors)
   };
 };
-
-module.exports = validateProfileInput;
