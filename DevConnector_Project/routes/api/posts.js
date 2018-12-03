@@ -36,6 +36,7 @@ router.post('/', passport.authenticate('jwt', { session: false }), (req, res) =>
 });
 
 router.delete('/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
+  // Check Id of owner post
   Post
     .findOneAndRemove({ _id: req.params.id, user: req.user.id })
     .then(post => {
