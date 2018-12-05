@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
-const Post = require('../../models/Post');
-const Profile = require('../../models/Profile');
-const validatePostInput = require('../../validation/post');
+const Post = require('../models/Post');
+const Profile = require('../models/Profile');
+const validatePostInput = require('../validation/post');
 
 router.get('/test', (req, res) => res.json({ msg: "posts works" }));
 

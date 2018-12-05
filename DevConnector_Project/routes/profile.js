@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
-const Profile = require('../../models/Profile');
-const validateProfileInput = require('../../validation/profile');
-const validateExperienceInput = require('../../validation/experience');
-const validateEducationInput = require('../../validation/education');
-const User = require('../../models/User');
+const Profile = require('../models/Profile');
+const validateProfileInput = require('../validation/profile');
+const validateExperienceInput = require('../validation/experience');
+const validateEducationInput = require('../validation/education');
+const User = require('../models/User');
 
 router.get('/test', (req, res) => res.json({ msg: "profile works" }));
 
