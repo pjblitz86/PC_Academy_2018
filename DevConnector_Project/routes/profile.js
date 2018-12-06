@@ -6,23 +6,11 @@ const validateProfileInput = require('../validation/profile');
 const validateExperienceInput = require('../validation/experience');
 const validateEducationInput = require('../validation/education');
 const User = require('../models/User');
+const profileController = require('../controllers/profile');
 
-router.get('/test', (req, res) => res.json({ msg: "profile works" }));
+router.get('/test', profileController.test);
 
-
-router.get('/', passport.authenticate('jwt', { session: false }), (req, res) => {
-  const errors = {};
-  Profile.findOne({ user: req.user.id })
-    .populate('user', ['name', 'avatar'])
-    .then(profile => {
-      if (!profile) {
-        errors.noprofile = 'There is no profile for this user';
-        return res.status(404).json({ errors });
-      }
-      res.json(profile);
-    })
-    .catch(err => res.status(404).json(err));
-});
+router.get('/current', passport.authenticate('jwt', { session: false }), profileController.current);
 
 router.get('/all', (req, res) => {
   const errors = {};
