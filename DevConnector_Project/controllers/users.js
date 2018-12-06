@@ -1,8 +1,8 @@
 const User = require('../models/User');
-// const validateRegisterInput = require('../validation/register');
+const validateRegisterInput = require('../validation/register');
 const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');
-// const validateLoginInput = require('../validation/login');
+const validateLoginInput = require('../validation/login');
 const jwt = require('jsonwebtoken');
 const keys = require('../config/keys');
 
@@ -14,18 +14,17 @@ exports.current = function (req, res) {
   });
 };
 
-// REFACTOR for validator to work throws 500 status code
 exports.register = function (req, res) {
-  // const { errors, isValid } = validateRegisterInput(req.body);
-  // if (!isValid) {
-  //   return res.status(400).json(errors);
-  // }
+  const { errors, isValid } = validateRegisterInput(req.body);
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
 
   User.findOne({ email: req.body.email })
     .then(user => {
       if (user) {
-        // errors.email = 'Email already exists';
-        return res.status(400).json('Email already exists');
+        errors.email = 'Email already exists';
+        return res.status(400).json(errors);
       } else {
         const avatar = gravatar.url(req.body.email, {
           s: '200', // size
@@ -51,19 +50,18 @@ exports.register = function (req, res) {
     });
 };
 
-// REFACTOR
 exports.login = function (req, res) {
-  // const { errors, isValid } = validateLoginInput(req.body);
-  // if (!isValid) {
-  //   return res.status(400).json(errors);
-  // }
+  const { errors, isValid } = validateLoginInput(req.body);
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
   const email = req.body.email;
   const password = req.body.password;
   User.findOne({ email })
     .then(user => {
       if (!user) {
-        // errors.email = 'User not found';
-        return res.status(404).json('User not found');
+        errors.email = 'User not found';
+        return res.status(404).json(errors);
       }
       bcrypt.compare(password, user.password)
         .then(isMatch => {
@@ -80,8 +78,8 @@ exports.login = function (req, res) {
                 });
               });
           } else {
-            // errors.password = 'Password incorrect';
-            return res.status(400).json('Password incorrect');
+            errors.password = 'Password incorrect';
+            return res.status(400).json(errors);
           }
         });
     });
