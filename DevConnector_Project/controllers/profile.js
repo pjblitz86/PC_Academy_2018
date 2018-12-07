@@ -4,12 +4,11 @@ const validateProfileInput = require('../validation/profile');
 const validateExperienceInput = require('../validation/experience');
 const validateEducationInput = require('../validation/education');
 
-
 exports.test = function (req, res) {
   res.json({ msg: "profile works" });
 };
 
-exports.getCurrentProfile = function (req, res) {
+exports.getCurrent = function (req, res) {
   const errors = {};
   Profile.findOne({ user: req.user.id })
     .populate('user', ['name', 'avatar'])
@@ -23,7 +22,7 @@ exports.getCurrentProfile = function (req, res) {
     .catch(err => res.status(404).json(err));
 };
 
-exports.getAllProfiles = function (req, res) {
+exports.getAll = function (req, res) {
   const errors = {};
   Profile.find()
     .populate('user', ['name', 'avatar'])
@@ -65,7 +64,7 @@ exports.getProfileByUserId = function (req, res) {
     .catch(err => res.status(404).json(err));
 };
 
-exports.createNewOrEditProfile = function (req, res) {
+exports.createNewOrEdit = function (req, res) {
   const { errors, isValid } = validateProfileInput(req.body);
   if (!isValid) {
     return res.status(400).json(errors);
@@ -105,7 +104,8 @@ exports.createNewOrEditProfile = function (req, res) {
               .then(profile => res.json(profile));
           });
       }
-    });
+    })
+    .catch(err => res.status(404).json(err));
 };
 
 exports.addExperience = function (req, res) {
@@ -126,7 +126,8 @@ exports.addExperience = function (req, res) {
       };
       profile.experience.unshift(newExp);
       profile.save().then(profile => res.json(profile));
-    });
+    })
+    .catch(err => res.status(404).json(err));
 };
 
 exports.addEducation = function (req, res) {
@@ -147,7 +148,8 @@ exports.addEducation = function (req, res) {
       };
       profile.education.unshift(newEdu);
       profile.save().then(profile => res.json(profile));
-    });
+    })
+    .catch(err => res.status(404).json(err));
 };
 
 exports.deleteExperience = function (req, res) {
@@ -181,7 +183,25 @@ exports.deleteProfileAndUser = function (req, res) {
     .then(() => {
       User.findOneAndRemove({ _id: req.user.id })
         .then(() => res.json({ success: true }));
-    });
+    })
+    .catch(err => res.status(404).json(err));
 };
+
+
+// exports.deleteProfileAndUser = async function (req, res, ) {
+//   // Profile.findOneAndRemove({ user: req.user.id })
+//   //   .then(() => {
+//   //     User.findOneAndRemove({ _id: req.user.id })
+//   //       .then(() => res.json({ success: true }));
+//   //   })
+//   //   .catch(err => res.status(404).json(err));
+//   try {
+//     await Profile.findOneAndRemove({ user: req.user.id });
+//     await User.findOneAndRemove({ _id: req.user.id });
+
+//   } catch (error) {
+//     res.status(404).json(error)
+//   }
+// };
 
 

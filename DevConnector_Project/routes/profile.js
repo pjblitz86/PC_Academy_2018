@@ -1,28 +1,28 @@
 const express = require('express');
 const router = express.Router();
-const passport = require('passport');
 const profileController = require('../controllers/profile');
+const secureRoute = require('../config/passport').secure;
 
 router.get('/test', profileController.test);
 
-router.get('/current', passport.authenticate('jwt', { session: false }), profileController.getCurrentProfile);
+router.get('/current', secureRoute, profileController.getCurrent);
 
-router.get('/all', profileController.getAllProfiles);
+router.get('/all', profileController.getAll);
 
 router.get('/handle/:handle', profileController.getProfileByHandle);
 
 router.get('/user/:user_id', profileController.getProfileByUserId);
 
-router.post('/createoredit', passport.authenticate('jwt', { session: false }), profileController.createNewOrEditProfile);
+router.post('/createoredit', secureRoute, profileController.createNewOrEdit);
 
-router.post('/experience', passport.authenticate('jwt', { session: false }), profileController.addExperience);
+router.post('/experience', secureRoute, profileController.addExperience);
 
-router.post('/education', passport.authenticate('jwt', { session: false }), profileController.addEducation);
+router.post('/education', secureRoute, profileController.addEducation);
 
-router.delete('/experience/:exp_id', passport.authenticate('jwt', { session: false }), profileController.deleteExperience);
+router.delete('/experience/:exp_id', secureRoute, profileController.deleteExperience);
 
-router.delete('/education/:edu_id', passport.authenticate('jwt', { session: false }), profileController.deleteEducation);
+router.delete('/education/:edu_id', secureRoute, profileController.deleteEducation);
 
-router.delete('/', passport.authenticate('jwt', { session: false }), profileController.deleteProfileAndUser);
+router.delete('/', secureRoute, profileController.deleteProfileAndUser);
 
 module.exports = router;

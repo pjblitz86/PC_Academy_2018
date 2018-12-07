@@ -47,7 +47,8 @@ exports.register = function (req, res) {
           });
         });
       }
-    });
+    })
+    .catch(err => res.status(404).json(err));
 };
 
 exports.login = function (req, res) {
@@ -82,6 +83,7 @@ exports.login = function (req, res) {
             return res.status(400).json(errors);
           }
         });
-    });
+    })
+    .catch(err => res.status(404).json(err));
 };
 

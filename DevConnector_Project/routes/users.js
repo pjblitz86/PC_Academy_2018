@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const userController = require('../controllers/users');
-const passport = require('passport');
+const secureRoute = require('../config/passport').secure;
 
-router.get('/current', passport.authenticate('jwt', { session: false }), userController.current);
+router.get('/current', secureRoute, userController.current);
 
 router.post('/register', userController.register);
 

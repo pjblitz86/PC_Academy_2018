@@ -1,6 +1,7 @@
 const JwtStrategy = require('passport-jwt').Strategy;
 const ExtractJwt = require('passport-jwt').ExtractJwt;
 const mongoose = require('mongoose');
+const passport = require('passport');
 const User = mongoose.model('users');
 const keys = require('./keys');
 
@@ -20,3 +21,5 @@ module.exports = passport => {
       .catch(err => console.log(err));
   }));
 };
+
+module.exports.secure = passport.authenticate('jwt', { session: false });
