@@ -19,7 +19,7 @@ exports.getCurrent = function (req, res) {
       }
       res.json(profile);
     })
-    .catch(err => res.status(404).json({ err: `${err}` }));
+    .catch(err => res.status(404).json(err.message));
 };
 
 exports.getAll = function (req, res) {
@@ -32,7 +32,7 @@ exports.getAll = function (req, res) {
       }
       res.json(profiles);
     })
-    .catch(err => res.status(404).json({ err: `${err}` }));
+    .catch(err => res.status(404).json(err.message));
 };
 
 exports.getByHandle = function (req, res) {
@@ -45,7 +45,7 @@ exports.getByHandle = function (req, res) {
       }
       res.json(profile);
     })
-    .catch(err => res.status(404).json({ err: `${err}` }));
+    .catch(err => res.status(404).json(err.message));
 };
 
 exports.getByUserId = function (req, res) {
@@ -58,7 +58,7 @@ exports.getByUserId = function (req, res) {
       }
       res.json(profile);
     })
-    .catch(err => res.status(404).json({ err: `${err}` }));
+    .catch(err => res.status(404).json(err.message));
 };
 
 exports.createNewOrEdit = function (req, res) {
@@ -103,7 +103,7 @@ exports.createNewOrEdit = function (req, res) {
           });
       }
     })
-    .catch(err => res.status(404).json({ err: `${err}` }));
+    .catch(err => res.status(404).json(err.message));
 };
 
 exports.addExperience = function (req, res) {
@@ -125,7 +125,7 @@ exports.addExperience = function (req, res) {
       profile.experience.unshift(newExp);
       profile.save().then(profile => res.json(profile));
     })
-    .catch(err => res.status(404).json({ err: `${err}` }));
+    .catch(err => res.status(404).json(err.message));
 };
 
 exports.addEducation = function (req, res) {
@@ -147,7 +147,7 @@ exports.addEducation = function (req, res) {
       profile.education.unshift(newEdu);
       profile.save().then(profile => res.json(profile));
     })
-    .catch(err => res.status(404).json({ err: `${err}` }));
+    .catch(err => res.status(404).json(err.message));
 };
 
 exports.deleteExperience = function (req, res) {
@@ -165,7 +165,7 @@ exports.deleteExperience = function (req, res) {
         profile.save().then(profile => res.json(profile));
       }
     })
-    .catch(err => res.status(404).json({ err: `${err}` }));
+    .catch(err => res.status(404).json(err.message));
 };
 
 exports.deleteEducation = function (req, res) {
@@ -182,7 +182,7 @@ exports.deleteEducation = function (req, res) {
         profile.save().then(profile => res.json(profile));
       }
     })
-    .catch(err => res.status(404).json({ err: `${err}` }));
+    .catch(err => res.status(404).json(err.message));
 };
 
 exports.deleteProfileAndUser = function (req, res) {
@@ -191,5 +191,5 @@ exports.deleteProfileAndUser = function (req, res) {
       User.findOneAndRemove({ _id: req.user.id })
         .then(() => res.json({ success: true }));
     })
-    .catch(err => res.status(404).json({ err: `${err}` }));
+    .catch(err => res.status(404).json(err.message));
 };

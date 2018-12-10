@@ -9,13 +9,13 @@ exports.getAll = function (req, res) {
   Post.find()
     .sort({ date: -1 })
     .then(posts => res.json(posts))
-    .catch(err => res.status(404).json(err));
+    .catch(err => res.status(404).json(err.message));
 };
 
 exports.getOne = function (req, res) {
   Post.findById(req.params.id)
     .then(post => res.json(post))
-    .catch(err => res.status(404).json(err));
+    .catch(err => res.status(404).json(err.message));
 };
 
 exports.createPost = function (req, res) {
@@ -42,7 +42,7 @@ exports.deletePost = function (req, res) {
       }
       post.remove().then(() => res.json({ success: true }));
     })
-    .catch(err => res.status(404).json(err));
+    .catch(err => res.status(404).json(err.message));
 };
 
 exports.addLike = function (req, res) {
@@ -55,7 +55,7 @@ exports.addLike = function (req, res) {
       post.save()
         .then(post => res.json(post));
     })
-    .catch(err => res.status(404).json(err));
+    .catch(err => res.status(404).json(err.message));
 };
 
 exports.removeLike = function (req, res) {
@@ -72,7 +72,7 @@ exports.removeLike = function (req, res) {
       post.save()
         .then(post => res.json(post));
     })
-    .catch(err => res.status(404).json(err));
+    .catch(err => res.status(404).json(err.message));
 };
 
 exports.addCommentToPost = function (req, res) {
@@ -92,7 +92,7 @@ exports.addCommentToPost = function (req, res) {
       post.comments.unshift(newComment);
       post.save().then(post => res.json(post));
     })
-    .catch(err => res.status(404).json(err));
+    .catch(err => res.status(404).json(err.message));
 };
 
 exports.deleteCommentFromPost = function (req, res) {
@@ -114,5 +114,5 @@ exports.deleteCommentFromPost = function (req, res) {
         post.save().then(post => res.json(post));
       }
     })
-    .catch(err => res.status(404).json(err));
+    .catch(err => res.status(404).json(err.message));
 };
