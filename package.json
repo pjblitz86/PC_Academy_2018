@@ -4,7 +4,7 @@
   "description": "Present Connection Academy 2018 tasks and project",
   "main": "./DevConnector_Project/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha ./DevConnector_Project/test --timeout 10000",
     "build": "babel task1_text_area -d build",
     "start": "node ./DevConnector_Project/server.js",
     "server": "nodemon ./DevConnector_Project/server.js"
@@ -31,9 +31,15 @@
   },
   "homepage": "https://github.com/pjblitz86/PC_Academy_2018#readme",
   "devDependencies": {
+    "@types/chai": "^4.1.7",
+    "@types/chai-http": "^3.0.5",
+    "@types/mocha": "^5.2.5",
     "babel-cli": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.0",
     "eslint": "^5.8.0",
+    "mocha": "^5.2.0",
     "nodemon": "^1.18.6",
     "npm": "^6.4.1",
     "webpack": "^4.25.1",

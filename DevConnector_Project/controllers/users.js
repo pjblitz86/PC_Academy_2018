@@ -70,7 +70,7 @@ exports.login = function (req, res) {
             const payload = { id: user.id, name: user.name, avatar: user.avatar };
             jwt.sign(
               payload,
-              keys.secretOrKey,
+              keys.JWT_SECRET,
               { expiresIn: 3600 },
               (err, token) => {
                 res.json({
