@@ -19,7 +19,7 @@ exports.getCurrent = function (req, res) {
       }
       res.json(profile);
     })
-    .catch(err => res.status(404).json(err));
+    .catch(err => res.status(404).json({ err: `${err}` }));
 };
 
 exports.getAll = function (req, res) {
@@ -27,15 +27,15 @@ exports.getAll = function (req, res) {
     .populate('user', ['name', 'avatar'])
     .then(profiles => {
       if (!profiles) {
-        errors.noprofile = 'There are no profiles';
+        errors.noprofiles = 'There are no profiles';
         return res.status(404).json(errors);
       }
       res.json(profiles);
     })
-    .catch(err => res.status(404).json(err));
+    .catch(err => res.status(404).json({ err: `${err}` }));
 };
 
-exports.getProfileByHandle = function (req, res) {
+exports.getByHandle = function (req, res) {
   Profile.findOne({ handle: req.params.handle })
     .populate('user', ['name', 'avatar'])
     .then(profile => {
@@ -45,10 +45,10 @@ exports.getProfileByHandle = function (req, res) {
       }
       res.json(profile);
     })
-    .catch(err => res.status(404).json(err));
+    .catch(err => res.status(404).json({ err: `${err}` }));
 };
 
-exports.getProfileByUserId = function (req, res) {
+exports.getByUserId = function (req, res) {
   Profile.findOne({ user: req.params.user_id })
     .populate('user', ['name', 'avatar'])
     .then(profile => {
@@ -58,7 +58,7 @@ exports.getProfileByUserId = function (req, res) {
       }
       res.json(profile);
     })
-    .catch(err => res.status(404).json(err));
+    .catch(err => res.status(404).json({ err: `${err}` }));
 };
 
 exports.createNewOrEdit = function (req, res) {
@@ -66,6 +66,7 @@ exports.createNewOrEdit = function (req, res) {
   if (!isValid) {
     return res.status(400).json(errors);
   }
+
   const profileFields = {};
   profileFields.user = req.user.id;
   if (req.body.handle) profileFields.handle = req.body.handle;
@@ -102,7 +103,7 @@ exports.createNewOrEdit = function (req, res) {
           });
       }
     })
-    .catch(err => res.status(404).json(err));
+    .catch(err => res.status(404).json({ err: `${err}` }));
 };
 
 exports.addExperience = function (req, res) {
@@ -124,7 +125,7 @@ exports.addExperience = function (req, res) {
       profile.experience.unshift(newExp);
       profile.save().then(profile => res.json(profile));
     })
-    .catch(err => res.status(404).json(err));
+    .catch(err => res.status(404).json({ err: `${err}` }));
 };
 
 exports.addEducation = function (req, res) {
@@ -146,7 +147,7 @@ exports.addEducation = function (req, res) {
       profile.education.unshift(newEdu);
       profile.save().then(profile => res.json(profile));
     })
-    .catch(err => res.status(404).json(err));
+    .catch(err => res.status(404).json({ err: `${err}` }));
 };
 
 exports.deleteExperience = function (req, res) {
@@ -164,7 +165,7 @@ exports.deleteExperience = function (req, res) {
         profile.save().then(profile => res.json(profile));
       }
     })
-    .catch(err => res.status(404).json(err));
+    .catch(err => res.status(404).json({ err: `${err}` }));
 };
 
 exports.deleteEducation = function (req, res) {
@@ -181,7 +182,7 @@ exports.deleteEducation = function (req, res) {
         profile.save().then(profile => res.json(profile));
       }
     })
-    .catch(err => res.status(404).json(err));
+    .catch(err => res.status(404).json({ err: `${err}` }));
 };
 
 exports.deleteProfileAndUser = function (req, res) {
@@ -190,5 +191,5 @@ exports.deleteProfileAndUser = function (req, res) {
       User.findOneAndRemove({ _id: req.user.id })
         .then(() => res.json({ success: true }));
     })
-    .catch(err => res.status(404).json(err));
+    .catch(err => res.status(404).json({ err: `${err}` }));
 };

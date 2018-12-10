@@ -9,9 +9,9 @@ router.get('/current', secureRoute, profileController.getCurrent);
 
 router.get('/all', profileController.getAll);
 
-router.get('/handle/:handle', profileController.getProfileByHandle);
+router.get('/handle/:handle', profileController.getByHandle);
 
-router.get('/user/:user_id', profileController.getProfileByUserId);
+router.get('/user/:user_id', profileController.getByUserId);
 
 router.post('/createoredit', secureRoute, profileController.createNewOrEdit);
 

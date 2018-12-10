@@ -48,7 +48,7 @@ exports.register = function (req, res) {
         });
       }
     })
-    .catch(err => res.status(404).json(err));
+    .catch(err => res.status(404).json({ err: `${err}` }));
 };
 
 exports.login = function (req, res) {
@@ -84,6 +84,6 @@ exports.login = function (req, res) {
           }
         });
     })
-    .catch(err => res.status(404).json(err));
+    .catch(err => res.status(404).json({ err: `${err}` }));
 };
 
