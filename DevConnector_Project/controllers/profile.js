@@ -3,13 +3,13 @@ const User = require('../models/User');
 const validateProfileInput = require('../validation/profile');
 const validateExperienceInput = require('../validation/experience');
 const validateEducationInput = require('../validation/education');
+const errors = {};
 
 exports.test = function (req, res) {
   res.json({ msg: "profile works" });
 };
 
 exports.getCurrent = function (req, res) {
-  const errors = {};
   Profile.findOne({ user: req.user.id })
     .populate('user', ['name', 'avatar'])
     .then(profile => {
@@ -23,7 +23,6 @@ exports.getCurrent = function (req, res) {
 };
 
 exports.getAll = function (req, res) {
-  const errors = {};
   Profile.find()
     .populate('user', ['name', 'avatar'])
     .then(profiles => {
@@ -37,7 +36,6 @@ exports.getAll = function (req, res) {
 };
 
 exports.getProfileByHandle = function (req, res) {
-  const errors = {};
   Profile.findOne({ handle: req.params.handle })
     .populate('user', ['name', 'avatar'])
     .then(profile => {
@@ -51,7 +49,6 @@ exports.getProfileByHandle = function (req, res) {
 };
 
 exports.getProfileByUserId = function (req, res) {
-  const errors = {};
   Profile.findOne({ user: req.params.user_id })
     .populate('user', ['name', 'avatar'])
     .then(profile => {
@@ -159,8 +156,13 @@ exports.deleteExperience = function (req, res) {
         .map(item => item.id)
         .indexOf(req.params.exp_id);
 
-      profile.experience.splice(removeIndex, 1);
-      profile.save().then(profile => res.json(profile));
+      if (removeIndex == -1) {
+        errors.noExpToDelete = 'There is no experience to delete';
+        return res.status(404).json(errors);
+      } else {
+        profile.experience.splice(removeIndex, 1);
+        profile.save().then(profile => res.json(profile));
+      }
     })
     .catch(err => res.status(404).json(err));
 };
@@ -171,9 +173,13 @@ exports.deleteEducation = function (req, res) {
       const removeIndex = profile.education
         .map(item => item.id)
         .indexOf(req.params.edu_id);
-
-      profile.education.splice(removeIndex, 1);
-      profile.save().then(profile => res.json(profile));
+      if (removeIndex == -1) {
+        errors.noEduToDelete = 'There is no education to delete';
+        return res.status(404).json(errors);
+      } else {
+        profile.education.splice(removeIndex, 1);
+        profile.save().then(profile => res.json(profile));
+      }
     })
     .catch(err => res.status(404).json(err));
 };
@@ -186,22 +192,3 @@ exports.deleteProfileAndUser = function (req, res) {
     })
     .catch(err => res.status(404).json(err));
 };
-
-
-// exports.deleteProfileAndUser = async function (req, res, ) {
-//   // Profile.findOneAndRemove({ user: req.user.id })
-//   //   .then(() => {
-//   //     User.findOneAndRemove({ _id: req.user.id })
-//   //       .then(() => res.json({ success: true }));
-//   //   })
-//   //   .catch(err => res.status(404).json(err));
-//   try {
-//     await Profile.findOneAndRemove({ user: req.user.id });
-//     await User.findOneAndRemove({ _id: req.user.id });
-
-//   } catch (error) {
-//     res.status(404).json(error)
-//   }
-// };
-
-

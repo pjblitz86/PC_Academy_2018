@@ -26,7 +26,7 @@ module.exports = function validateRegisterInput(data) {
   }
 
   if (!Validator.isLength(data.password, { min: 4, max: 30 })) {
-    errors.password = 'Password must be at least 4 characters';
+    errors.password = 'Password must be between at least 4 characters';
   }
 
   if (Validator.isEmpty(data.password)) {

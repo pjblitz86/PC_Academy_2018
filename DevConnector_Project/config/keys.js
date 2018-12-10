@@ -1,4 +1,5 @@
 module.exports = {
+  PORT: process.env.PORT || 5000,
   CONNECTION_STRING: 'mongodb://pjblitz86:admin123@ds261253.mlab.com:61253/pj86devconnector',
   JWT_SECRET: 'secret',
   CONNECTION_STRING_TEST: 'mongodb://pjblitz86:admin123@ds261253.mlab.com:61253/pj86devconnector',

@@ -5,7 +5,7 @@ const passport = require('passport');
 
 const profile = require('./routes/profile');
 const posts = require('./routes/posts');
-const port = require('./config/port');
+const port = require('./config/keys').PORT;
 const users = require('./routes/users');
 
 const app = express();
