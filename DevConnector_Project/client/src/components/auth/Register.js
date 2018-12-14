@@ -23,7 +23,6 @@ class Register extends Component {
     }
   }
 
-
   onChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   }
@@ -50,9 +49,14 @@ class Register extends Component {
               <p className="lead text-center">Create your DevConnector account</p>
               <form noValidate onSubmit={this.onSubmit}>
                 <div className="form-group">
-                  <input type="text"
+                  <input
+                    type="text"
                     className={classnames('form-control form-control-lg', { 'is-invalid': errors.name })}
-                    placeholder="Name" name="name" value={this.state.name} onChange={this.onChange} />
+                    placeholder="Name"
+                    name="name"
+                    value={this.state.name}
+                    onChange={this.onChange}
+                  />
                   {errors.name && (<div className="invalid-feedback">{errors.name}</div>)}
                 </div>
                 <div className="form-group">
