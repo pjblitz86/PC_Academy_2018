@@ -3,9 +3,8 @@ import { ADD_POST, GET_POSTS, POST_LOADING, DELETE_POST } from '../actions/types
 const initialState = {
   posts: [],
   post: {},
-  loading: {}
+  loading: false
 }
-
 
 export default function (state = initialState, action) {
   switch (action.type) {
