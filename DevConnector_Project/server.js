@@ -6,7 +6,6 @@ const path = require('path');
 
 const profile = require('./routes/profile');
 const posts = require('./routes/posts');
-const port = require('./config/keys').PORT;
 const users = require('./routes/users');
 
 const app = express();
@@ -42,6 +41,7 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
+const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`Server running on port ${port}`));
 
 module.exports = app;
