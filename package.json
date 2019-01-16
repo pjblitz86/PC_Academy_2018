@@ -10,7 +10,8 @@
     "server": "nodemon ./DevConnector_Project/server.js",
     "client": "npm start --prefix ./DevConnector_Project/client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "test": "mocha ./DevConnector_Project/test --timeout 10000"
+    "test": "mocha ./DevConnector_Project/test --timeout 10000",
+    "heroku_postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix ./DevConnector_Project/client && npm run build --prefix ./DevConnector_Project/client"
   },
   "repository": {
     "type": "git",
