@@ -10,7 +10,7 @@
     "client": "npm start --prefix DevConnector_Project/client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "test": "mocha DevConnector_Project/test --timeout 10000",
-    "heroku-postbuild": "cd DevConnector_Project && NPM_CONFIG_PRODUCTION=false && cd DevConnector_Project/client && npm install && npm run build"
+    "heroku-postbuild": "cd DevConnector_Project && NPM_CONFIG_PRODUCTION=false && cd client && npm install && npm run build"
   },
   "repository": {
     "type": "git",
