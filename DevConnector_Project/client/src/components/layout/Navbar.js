@@ -24,6 +24,9 @@ class Navbar extends Component {
           <Link className="nav-link" to="/dashboard">Dashboard</Link>
         </li>
         <li className="nav-item">
+          <Link className="nav-link" to="/dashboard">{user.name}</Link>
+        </li>
+        <li className="nav-item">
           <Link
             to="/"
             onClick={this.onLogoutClick}
