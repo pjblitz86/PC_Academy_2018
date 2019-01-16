@@ -4,14 +4,14 @@
   "description": "Present Connection Academy 2018 tasks and project",
   "main": "./DevConnector_Project/server.js",
   "scripts": {
-    "client-install": "npm install --prefix ./DevConnector_Project/client",
+    "client-install": "npm install --prefix DevConnector_Project/client",
     "build": "babel task1_text_area -d build",
-    "start": "node ./DevConnector_Project/server.js",
-    "server": "nodemon ./DevConnector_Project/server.js",
-    "client": "npm start --prefix ./DevConnector_Project/client",
+    "start": "node DevConnector_Project/server.js",
+    "server": "nodemon DevConnector_Project/server.js",
+    "client": "npm start --prefix DevConnector_Project/client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "test": "mocha ./DevConnector_Project/test --timeout 10000",
-    "heroku_postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix ./DevConnector_Project/client && npm run build --prefix ./DevConnector_Project/client"
+    "test": "mocha DevConnector_Project/test --timeout 10000",
+    "heroku_postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix DevConnector_Project/client && npm run build --prefix DevConnector_Project/client"
   },
   "repository": {
     "type": "git",
