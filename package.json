@@ -2,15 +2,15 @@
   "name": "pc_academy_2018",
   "version": "1.0.0",
   "description": "Present Connection Academy 2018 tasks and project",
-  "main": "server.js",
+  "main": "DevConnector_Project/server.js",
   "scripts": {
-    "client-install": "npm install client",
-    "start": "node server.js",
-    "server": "nodemon server.js",
-    "client": "npm start --prefix client",
+    "client-install": "npm install DevConnector_Project/client",
+    "start": "node DevConnector_Project/server.js",
+    "server": "nodemon DevConnector_Project/server.js",
+    "client": "npm start --prefix DevConnector_Project/client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "test": "mocha test --timeout 10000",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false cd client && npm install && npm run build"
+    "test": "mocha DevConnector_Project/test --timeout 10000",
+    "heroku-postbuild": "cd DevConnector_Project && NPM_CONFIG_PRODUCTION=false && cd DevConnector_Project/client && npm install && npm run build"
   },
   "repository": {
     "type": "git",
