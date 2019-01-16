@@ -4,7 +4,7 @@
   "description": "Present Connection Academy 2018 tasks and project",
   "main": "./DevConnector_Project/server.js",
   "scripts": {
-    "client-install": "npm install --prefix client",
+    "client-install": "npm install --prefix ./DevConnector_Project/client",
     "build": "babel task1_text_area -d build",
     "start": "node ./DevConnector_Project/server.js",
     "server": "nodemon ./DevConnector_Project/server.js",
