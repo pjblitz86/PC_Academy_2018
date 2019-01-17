@@ -23,29 +23,36 @@ class Register extends Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.errors) {
-      this.setState({ errors: nextProps.errors });
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (nextProps.errors !== prevState.errors) {
+      return { errors: nextProps.errors };
+    } else return null;
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.errors !== prevState.errors) {
+      this.setState({ errors: prevProps.errors });
     }
   }
 
   onChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   }
+
   onSubmit = (e) => {
     e.preventDefault();
+    const { name, email, password, password2 } = this.state;
     const newUser = {
-      name: this.state.name,
-      email: this.state.email,
-      password: this.state.password,
-      password2: this.state.password2
+      name,
+      email,
+      password,
+      password2
     }
     this.props.registerUser(newUser, this.props.history);
-
   }
 
   render() {
-    const { errors } = this.state;
+    const { errors, name, email, password, password2 } = this.state;
     return (
       <div className="register">
         <div className="container">
@@ -57,7 +64,7 @@ class Register extends Component {
                 <TextFieldGroup
                   placeholder="Name"
                   name="name"
-                  value={this.state.name}
+                  value={name}
                   onChange={this.onChange}
                   error={errors.name}
                 />
@@ -65,7 +72,7 @@ class Register extends Component {
                   placeholder="Email"
                   name="email"
                   type="email"
-                  value={this.state.email}
+                  value={email}
                   onChange={this.onChange}
                   error={errors.email}
                   info="This site uses Gravatar so if you want a profile image, use a Gravatar email"
@@ -74,7 +81,7 @@ class Register extends Component {
                   placeholder="Password"
                   name="password"
                   type="password"
-                  value={this.state.password}
+                  value={password}
                   onChange={this.onChange}
                   error={errors.password}
                 />
@@ -82,7 +89,7 @@ class Register extends Component {
                   placeholder="Confirm Password"
                   name="password2"
                   type="password"
-                  value={this.state.password2}
+                  value={password2}
                   onChange={this.onChange}
                   error={errors.password2}
                 />
