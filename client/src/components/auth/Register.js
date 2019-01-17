@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { registerUser } from '../../actions/authActions';
 import TextFieldGroup from '../common/TextFieldGroup';
@@ -23,15 +22,9 @@ class Register extends Component {
     }
   }
 
-  static getDerivedStateFromProps(nextProps, prevState) {
-    if (nextProps.errors !== prevState.errors) {
-      return { errors: nextProps.errors };
-    } else return null;
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    if (prevProps.errors !== prevState.errors) {
-      this.setState({ errors: prevProps.errors });
+  componentDidUpdate(prevProps) {
+    if (prevProps.errors !== this.props.errors) {
+      this.setState({ errors: this.props.errors });
     }
   }
 
@@ -114,4 +107,4 @@ const mapStateToProps = (state) => ({
   errors: state.errors
 })
 
-export default connect(mapStateToProps, { registerUser })(withRouter(Register));
+export default connect(mapStateToProps, { registerUser })(Register);
