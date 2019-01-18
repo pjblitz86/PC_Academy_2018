@@ -20,13 +20,12 @@ class Login extends Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.auth.isAuthenticated) {
-      this.props.history.push('/dashboard');
+  componentDidUpdate(prevProps) {
+    if (prevProps.errors !== this.props.errors) {
+      this.setState({ errors: this.props.errors });
     }
-
-    if (nextProps.errors) {
-      this.setState({ errors: nextProps.errors })
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push("/dashboard");
     }
   }
 
@@ -43,7 +42,7 @@ class Login extends Component {
   }
 
   render() {
-    const { errors } = this.state;
+    const { errors, email, password } = this.state;
     return (
       <div className="login">
         <div className="container">
@@ -56,7 +55,7 @@ class Login extends Component {
                   placeholder="Email Address"
                   name="email"
                   type="email"
-                  value={this.state.email}
+                  value={email}
                   onChange={this.onChange}
                   error={errors.email}
                 />
@@ -64,7 +63,7 @@ class Login extends Component {
                   placeholder="Password"
                   name="password"
                   type="password"
-                  value={this.state.password}
+                  value={password}
                   onChange={this.onChange}
                   error={errors.password}
                 />
