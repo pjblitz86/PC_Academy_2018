@@ -85,29 +85,33 @@ export const addEducation = (eduData, history) => dispatch => {
 }
 
 export const deleteExperience = (id) => dispatch => {
-  axios
-    .delete(`/profile/experience/${id}`)
-    .then(res => dispatch({
-      type: GET_PROFILE,
-      payload: res.data
-    }))
-    .catch(err => dispatch({
-      type: GET_ERRORS,
-      payload: err.response.data
-    }))
+  if (window.confirm('Are you sure? This can not be undone!')) {
+    axios
+      .delete(`/profile/experience/${id}`)
+      .then(res => dispatch({
+        type: GET_PROFILE,
+        payload: res.data
+      }))
+      .catch(err => dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      }))
+  }
 }
 
 export const deleteEducation = (id) => dispatch => {
-  axios
-    .delete(`/profile/education/${id}`)
-    .then(res => dispatch({
-      type: GET_PROFILE,
-      payload: res.data
-    }))
-    .catch(err => dispatch({
-      type: GET_ERRORS,
-      payload: err.response.data
-    }))
+  if (window.confirm('Are you sure? This can not be undone!')) {
+    axios
+      .delete(`/profile/education/${id}`)
+      .then(res => dispatch({
+        type: GET_PROFILE,
+        payload: res.data
+      }))
+      .catch(err => dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      }))
+  }
 }
 
 export const deleteAccount = () => dispatch => {
