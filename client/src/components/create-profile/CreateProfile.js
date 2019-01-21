@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import TextFieldGroup from '../common/TextFieldGroup';
 import TextAreaFieldGroup from '../common/TextAreaFieldGroup';
@@ -30,29 +29,29 @@ class CreateProfile extends Component {
     }
   }
 
-  // alternative to componentWillRecieveProps
-  static getDerivedStateFromProps(nextProps) {
-    if (nextProps.errors) {
-      return ({ errors: nextProps.errors });
+  componentDidUpdate(prevProps) {
+    if (prevProps.errors !== this.props.errors) {
+      this.setState({ errors: this.props.errors });
     }
   }
 
   onSubmit = (e) => {
     e.preventDefault();
+    const { handle, company, website, location, status, skills, githubusername, bio, twitter, facebook, linkedin, youtube, instagram } = this.state;
     const profileData = {
-      handle: this.state.handle,
-      company: this.state.company,
-      website: this.state.website,
-      location: this.state.location,
-      status: this.state.status,
-      skills: this.state.skills,
-      githubusername: this.state.githubusername,
-      bio: this.state.bio,
-      twitter: this.state.twitter,
-      facebook: this.state.facebook,
-      linkedin: this.state.linkedin,
-      youtube: this.state.youtube,
-      instagram: this.state.instagram
+      handle,
+      company,
+      website,
+      location,
+      status,
+      skills,
+      githubusername,
+      bio,
+      twitter,
+      facebook,
+      linkedin,
+      youtube,
+      instagram
     }
     this.props.createProfile(profileData, this.props.history);
   }
@@ -62,7 +61,7 @@ class CreateProfile extends Component {
   }
 
   render() {
-    const { errors, displaySocialInputs } = this.state;
+    const { errors, displaySocialInputs, twitter, facebook, linkedin, youtube, instagram } = this.state;
     let socialInputs;
     if (displaySocialInputs) {
       socialInputs = (
@@ -71,7 +70,7 @@ class CreateProfile extends Component {
             placeholder="Twitter Profile URL"
             name="twitter"
             icon="fab fa-twitter"
-            value={this.state.twitter}
+            value={twitter}
             onChange={this.onChange}
             error={errors.twitter}
           />
@@ -79,7 +78,7 @@ class CreateProfile extends Component {
             placeholder="Facebook Page URL"
             name="facebook"
             icon="fab fa-facebook"
-            value={this.state.facebook}
+            value={facebook}
             onChange={this.onChange}
             error={errors.facebook}
           />
@@ -87,7 +86,7 @@ class CreateProfile extends Component {
             placeholder="Linkedin Profile URL"
             name="linkedin"
             icon="fab fa-linkedin"
-            value={this.state.linkedin}
+            value={linkedin}
             onChange={this.onChange}
             error={errors.linkedin}
           />
@@ -95,7 +94,7 @@ class CreateProfile extends Component {
             placeholder="Youtube Channel URL"
             name="youtube"
             icon="fab fa-youtube"
-            value={this.state.youtube}
+            value={youtube}
             onChange={this.onChange}
             error={errors.youtube}
           />
@@ -103,7 +102,7 @@ class CreateProfile extends Component {
             placeholder="Instagram Page URL"
             name="instagram"
             icon="fab fa-instagram"
-            value={this.state.instagram}
+            value={instagram}
             onChange={this.onChange}
             error={errors.instagram}
           />
@@ -232,4 +231,4 @@ const mapStateToProps = state => ({
   errors: state.errors
 });
 
-export default connect(mapStateToProps, { createProfile })(withRouter(CreateProfile));
+export default connect(mapStateToProps, { createProfile })(CreateProfile);
