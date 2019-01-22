@@ -17,7 +17,12 @@ class ProfileGithub extends Component {
     const { username } = this.props;
     const { count, sort, clientId, clientSecret } = this.state;
 
-    fetch(`https:/api.github.com/users/${username}/repos?per_page=${count}&sort=${sort}&client_id=${clientId}&client_secret=${clientSecret}`)
+    fetch(`https:/api.github.com/users/${username}/repos?per_page=${count}&sort=${sort}&client_id=${clientId}&client_secret=${clientSecret}`, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      }
+    })
       .then(res => res.json())
       .then(data => {
         if (this.refs.myRef) {
