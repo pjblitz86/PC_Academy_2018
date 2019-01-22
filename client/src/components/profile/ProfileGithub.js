@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import axios from 'axios';
 
 class ProfileGithub extends Component {
-  githubMounted = true;
   constructor(props) {
     super(props);
     this.state = {
@@ -19,17 +17,14 @@ class ProfileGithub extends Component {
     const { username } = this.props;
     const { count, sort, clientId, clientSecret } = this.state;
 
-    axios.get(`https:/api.github.com/users/${username}/repos?per_page=${count}&sort=${sort}&client_id=${clientId}&client_secret=${clientSecret}`)
-      .then(res => {
-        if (this.githubMounted) {
-          this.setState({ repos: res.data })
+    fetch(`https:/api.github.com/users/${username}/repos?per_page=${count}&sort=${sort}&client_id=${clientId}&client_secret=${clientSecret}`)
+      .then(res => res.json())
+      .then(data => {
+        if (this.refs.myRef) {
+          this.setState({ repos: data })
         }
       })
       .catch(err => console.log(err));
-  }
-
-  componentWillUnmount() {
-    this.githubMounted = false;
   }
 
   render() {
@@ -54,7 +49,7 @@ class ProfileGithub extends Component {
       </div>
     ))
     return (
-      <div>
+      <div ref="myRef">
         <hr />
         <h3 className="mb-4">Latest Github Repos</h3>
         {repoItems}
