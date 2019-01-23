@@ -56,8 +56,7 @@ exports.login = function (req, res) {
   if (!isValid) {
     return res.status(400).json(errors);
   }
-  const email = req.body.email;
-  const password = req.body.password;
+  const { email, password } = req.body;
   User.findOne({ email })
     .then(user => {
       if (!user) {
@@ -67,6 +66,7 @@ exports.login = function (req, res) {
       bcrypt.compare(password, user.password)
         .then(isMatch => {
           if (isMatch) {
+            // user passed, generate token
             const payload = { id: user.id, name: user.name, avatar: user.avatar };
             jwt.sign(
               payload,
