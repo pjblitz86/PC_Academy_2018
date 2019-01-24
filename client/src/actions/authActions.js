@@ -1,4 +1,5 @@
 import { GET_ERRORS, SET_CURRENT_USER } from './types';
+import { getCurrentProfile } from './profileActions';
 import axios from 'axios';
 import setAuthToken from '../utils/setAuthToken';
 import jwt_decode from 'jwt-decode';
@@ -22,6 +23,7 @@ export const loginUser = (userData) => dispatch => {
       setAuthToken(token);
       const decoded = jwt_decode(token);
       dispatch(setCurrentUser(decoded));
+      dispatch(getCurrentProfile());
 
     })
     .catch(err => dispatch({
